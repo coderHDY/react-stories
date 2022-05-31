@@ -8,7 +8,7 @@ export function ThrottleInput({ timeout }) {
 
     const [fetchDatas, setFetchDatas] = useState([]);
     const getData = () => val.trim() ? setFetchDatas(fetchDatas.concat(val.trim())) : '';
-    useThrottle(getData, [val, timeout], +timeout);
+    useThrottle(getData, [val], +timeout);
     return (
         <div>
             <input type="text" value={val} onInput={input} />
