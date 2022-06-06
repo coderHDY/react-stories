@@ -54,14 +54,14 @@ function useList(defaultList = [{
         const val = item.trim();
         const idx = list.findIndex(item => item.name === val);
         if (idx !== -1 || val === '') return;
-        const newList = list.concat({
+        const newList = [{
             name: item,
             done: false,
-        });
+        }].concat(list);
         setList(newList);
     };
     const removeItem = idx => {
-        const newList = list.slice(0, idx).concat(list.slice(idx + 1));
+        const newList = list.filter((_, i) => i !== idx);
         setList(newList);
     }
     const changeDone = idx => {
