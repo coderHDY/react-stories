@@ -10,11 +10,11 @@ export default {
             description: 'imgs',
             type: 'array',
             defaultValue: [
-                '/imgs/01.jpg',
-                '/imgs/02.jpg',
-                '/imgs/03.jpg',
-                '/imgs/04.jpg',
-                '/imgs/05.jpg',
+                './imgs/01.jpg',
+                './imgs/02.jpg',
+                './imgs/03.jpg',
+                './imgs/04.jpg',
+                './imgs/05.jpg',
             ],
             control: {
                 type: 'array'
