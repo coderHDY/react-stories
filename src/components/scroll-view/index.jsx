@@ -3,10 +3,10 @@ import styles from './index.module.css';
 
 export default function ScrollView(props) {
     const { imgs } = props;
-    const [container, swiper, prev, next, left, showIdx] = useShowIdx(0, imgs.length);
+    const [swiper, prev, next, left, showIdx] = useShowIdx(0, imgs.length);
     return (
         <>
-            <div className={styles["swiper-container"]} ref={container}>
+            <div className={styles["swiper-container"]}>
                 <div style={{ left }} className={styles["swiper"]} ref={swiper}>
                     {
                         imgs.map(item => (
@@ -39,7 +39,6 @@ function useShowIdx(defaultIdx, all) {
     const [left, setLeft] = useState(0);
     const [moving, setMoving] = useState(false);
     const swiper = useRef();
-    const container = useRef();
     const prev = () => {
         if (moving) return;
         setMoving(true);
@@ -60,7 +59,6 @@ function useShowIdx(defaultIdx, all) {
         setIdx(goIdx);
     };
     return [
-        container,
         swiper,
         prev,
         next,
