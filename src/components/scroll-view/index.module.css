@@ -49,3 +49,31 @@
     right: 3%;
     text-align: right;
 }
+.dot-content {
+    width: 100%;
+    position: absolute;
+    bottom: 5%;
+}
+.dot-box {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: auto;
+    text-align: center;
+}
+.dot-wrap {
+    flex: 1;
+    text-align: center;
+}
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    margin-right: 20px;
+    background-color: #fff;
+}
+.show-dot {
+    background-color: rgb(255, 0, 0);
+}

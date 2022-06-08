@@ -3,7 +3,7 @@ import styles from './index.module.css';
 
 export default function ScrollView(props) {
     const { imgs } = props;
-    const [container, swiper, prev, next, left] = useShowIdx(0, imgs.length);
+    const [container, swiper, prev, next, left, showIdx] = useShowIdx(0, imgs.length);
     return (
         <>
             <div className={styles["swiper-container"]} ref={container}>
@@ -16,6 +16,17 @@ export default function ScrollView(props) {
                         ))
                     }
                 </div>
+                <div className={styles["dot-content"]}>
+                    <div className={styles["dot-box"]}>
+                        {
+                            imgs.map((item, idx) => (
+                                <div className={styles['dot-wrap']} key={item}>
+                                    <span className={`${styles.dot + (showIdx === idx ? ' ' + styles['show-dot'] : '')}`}></span>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
                 <span className={styles["prev"]} onClick={prev}>《GO</span>
                 <span className={styles["next"]} onClick={next}>GO》</span>
             </div>
@@ -24,7 +35,7 @@ export default function ScrollView(props) {
 }
 
 function useShowIdx(defaultIdx, all) {
-    const [idx, setIdx] = useState(defaultIdx);
+    const [showIdx, setIdx] = useState(defaultIdx);
     const [left, setLeft] = useState(0);
     const [moving, setMoving] = useState(false);
     const swiper = useRef();
@@ -34,7 +45,7 @@ function useShowIdx(defaultIdx, all) {
         setMoving(true);
         setTimeout(() => setMoving(false), 500);
         const itemWidth = swiper.current.clientWidth;
-        const goIdx = idx <= 0 ? all - 1 : idx - 1;
+        const goIdx = showIdx <= 0 ? all - 1 : showIdx - 1;
         setLeft(-goIdx * itemWidth);
         setIdx(goIdx);
     };
@@ -44,7 +55,7 @@ function useShowIdx(defaultIdx, all) {
         setMoving(true);
         setTimeout(() => setMoving(false), 500);
         const itemWidth = swiper.current.clientWidth;
-        const goIdx = idx >= all - 1 ? 0 : idx + 1;
+        const goIdx = showIdx >= all - 1 ? 0 : showIdx + 1;
         setLeft(-goIdx * itemWidth);
         setIdx(goIdx);
     };
@@ -54,5 +65,6 @@ function useShowIdx(defaultIdx, all) {
         prev,
         next,
         left,
+        showIdx,
     ]
 }
