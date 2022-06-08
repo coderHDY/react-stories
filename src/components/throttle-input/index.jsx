@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import useThrottle from "../../hooks/useThrottle";
 
-export function ThrottleInput({ timeout }) {
+export default function ThrottleInput({ timeout }) {
     const [val, setVal] = useState('');
     const input = (e) => setVal(e.target.value);
 

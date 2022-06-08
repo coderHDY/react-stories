@@ -1,4 +1,4 @@
-import './index.css';
+import styles from './index.module.css';
 import { useState } from 'react';
 export default function TodoList() {
     const [
@@ -14,32 +14,32 @@ export default function TodoList() {
         changeInput('');
     }
     return (
-        <div className="todo-list-box">
-            <div className="search-box">
-                <input className="input-box" type="text" value={inputVal} onChange={e => changeInput(e.target.value)} onKeyUp={e => e.code === 'Enter' ? recordList() : ''} />
-                <button className="add-btn" onClick={recordList}>添加</button>
+        <div className={styles["todo-list-box"]}>
+            <div className={styles["search-box"]}>
+                <input className={styles["input-box"]} type="text" value={inputVal} onChange={e => changeInput(e.target.value)} onKeyUp={e => e.code === 'Enter' ? recordList() : ''} />
+                <button className={styles["add-btn"]} onClick={recordList}>添加</button>
             </div>
-            <dl className="item-list">
+            <dl className={styles["item-list"]}>
                 {
                     list.map((item, i) => (
-                        <li key={item.name} className="list-item">
-                            <input className="check-box" type="checkbox" value={!item.done} onChange={() => changeDone(i)} />
-                            <span className="todo-item">{item.name}</span>
-                            <button className="del-btn" onClick={() => removeItem(i)}>删除</button>
+                        <li key={item.name} className={styles["list-item"]}>
+                            <input className={styles["check-box"]} type="checkbox" value={!item.done} onChange={() => changeDone(i)} />
+                            <span className={styles["todo-item"]}>{item.name}</span>
+                            <button className={styles["del-btn"]} onClick={() => removeItem(i)}>删除</button>
                         </li>
                     ))
                 }
             </dl>
-            <div className="calc-list">
-                <span className="totol-font">总计：</span>
-                <span className="totol-num">
+            <div className={styles["calc-list"]}>
+                <span className={styles["totol-font"]}>总计：</span>
+                <span className={styles["totol-num"]}>
                     {
                         list.filter(item => item.done === true).length
                     }/{
                         list.length
                     }
                 </span>
-                <button className="clear-btn" onClick={clearList}>清空</button>
+                <button className={styles["clear-btn"]} onClick={clearList}>清空</button>
             </div>
         </div>
     )

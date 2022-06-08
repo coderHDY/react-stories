@@ -1,5 +1,5 @@
 import React from "react";
-import { ThrottleInput } from "../components/throttle-input";
+import ThrottleInput from "../components/throttle-input";
 
 export default {
     title: 'Example/ThrottleInput',

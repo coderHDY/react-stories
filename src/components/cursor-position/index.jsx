@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import useListener from '../../hooks/useListener';
-import './index.css';
+import styles from './index.module.css';
 export default function CusorPosition() {
     const [x, y] = useCursor();
     return (
