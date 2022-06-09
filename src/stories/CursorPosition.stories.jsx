@@ -1,5 +1,5 @@
 import React from "react";
-import CursorPosition from '../components/cursor-position/index';
+import CursorPosition from '../components/cursor-position/index.tsx';
 
 export default {
     title: 'Example/CursorPosition',

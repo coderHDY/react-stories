@@ -50,15 +50,14 @@
     text-align: right;
 }
 .dot-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
     width: 100%;
-    position: absolute;
-    bottom: 5%;
+    bottom: 1.5em;
 }
 .dot-box {
     display: flex;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
     width: auto;
     text-align: center;
 }

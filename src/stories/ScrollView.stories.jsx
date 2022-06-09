@@ -1,5 +1,5 @@
 import React from "react";
-import ScrollView from "../components/scroll-view";
+import ScrollView from "../components/scroll-view/index.tsx";
 
 export default {
     title: 'Example/ScrollView',

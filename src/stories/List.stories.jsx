@@ -1,7 +1,7 @@
 import React from 'react';
 // import { within, userEvent } from '@storybook/testing-library';
 
-import TodoList from '../components/todo-list/index';
+import TodoList from '../components/todo-list/index.tsx';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {

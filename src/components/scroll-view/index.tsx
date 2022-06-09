@@ -1,9 +1,16 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, LegacyRef } from "react";
 import styles from './index.module.css';
+type showPosition = [
+    swiper: LegacyRef<HTMLDivElement>,
+    prev: () => void,
+    next: () => void,
+    left: number,
+    showIdx: number,
+]
 
 export default function ScrollView(props) {
     const { imgs } = props;
-    const [swiper, prev, next, left, showIdx] = useShowIdx(0, imgs.length);
+    const [swiper, prev, next, left, showIdx] = useShowPosition(0, imgs.length);
     return (
         <>
             <div className={styles["swiper-container"]}>
@@ -34,27 +41,26 @@ export default function ScrollView(props) {
     )
 }
 
-function useShowIdx(defaultIdx, all) {
+function useShowPosition(defaultIdx: number, num: number): showPosition {
     const [showIdx, setIdx] = useState(defaultIdx);
     const [left, setLeft] = useState(0);
     const [moving, setMoving] = useState(false);
-    const swiper = useRef();
+    const swiper = useRef<HTMLDivElement>();
     const prev = () => {
         if (moving) return;
         setMoving(true);
         setTimeout(() => setMoving(false), 500);
         const itemWidth = swiper.current.clientWidth;
-        const goIdx = showIdx <= 0 ? all - 1 : showIdx - 1;
+        const goIdx = showIdx <= 0 ? num - 1 : showIdx - 1;
         setLeft(-goIdx * itemWidth);
         setIdx(goIdx);
     };
-
     const next = () => {
         if (moving) return;
         setMoving(true);
         setTimeout(() => setMoving(false), 500);
         const itemWidth = swiper.current.clientWidth;
-        const goIdx = showIdx >= all - 1 ? 0 : showIdx + 1;
+        const goIdx = showIdx >= num - 1 ? 0 : showIdx + 1;
         setLeft(-goIdx * itemWidth);
         setIdx(goIdx);
     };
