@@ -15,15 +15,17 @@ const reducerMap = new Map([
 
 const listReducer = (list, action) => {
     const { type, payload } = action;
-    return reducerMap.get(type)(list, payload);
+    const newList = reducerMap.get(type)(list, payload);
+    localStorage.setItem('todo-list', JSON.stringify(newList));
+    return newList;
 }
 
-// @ts-ignore
+const initState = JSON.parse(localStorage.getItem('todo-list')) || [];
+
 export default function TodoList() {
     const [inputVal, changeInput] = useState('');
-    const [list, dispatch] = useReducer(listReducer, [{ name: '吃饭', done: false }]);
+    const [list, dispatch] = useReducer(listReducer, initState);
 
-    // @ts-ignore
     const recordList = () => {
         const val = inputVal.trim();
         const idx = list.findIndex(item => item.name === val);
