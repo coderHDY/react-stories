@@ -1,9 +1,9 @@
 import React from 'react';
-import TodoList from './components/todo-list';
+import Md2 from './components/react-markdown2/index.tsx';
 export default function App() {
     return (
         <>
-            <TodoList />
+            <Md2 />
         </>
     );
 }
